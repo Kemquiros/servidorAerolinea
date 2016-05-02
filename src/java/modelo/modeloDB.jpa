@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings status="GENERATED" jaxb-support="false" id="_146196384359862" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Pasajero" visibile="true" minimized="false" id="_146196384359865">
+        <jpa:attributes>
+            <jpa:id name="cedula" attribute-type="String" visibile="true" id="_146196384359872">
+                <jpa:column name="cedula" unique="false" nullable="false" insertable="true" updatable="true" table="pasajero" length="35"/>
+            </jpa:id>
+            <jpa:basic name="nombre" optional="false" attribute-type="String" visibile="true" id="_146196384359873">
+                <jpa:column name="nombre" unique="false" nullable="false" insertable="true" updatable="true" table="pasajero" length="35"/>
+            </jpa:basic>
+            <jpa:basic name="usuario" optional="false" attribute-type="String" visibile="true" id="_146196384359874">
+                <jpa:column name="usuario" unique="false" nullable="false" insertable="true" updatable="true" table="pasajero" length="35"/>
+            </jpa:basic>
+            <jpa:basic name="contrasena" optional="false" attribute-type="String" visibile="true" id="_146196384359875">
+                <jpa:column name="contrasena" unique="false" nullable="false" insertable="true" updatable="true" table="pasajero" length="35"/>
+            </jpa:basic>
+            <jpa:one-to-many name="tiqueteCollection" target-entity="Tiquete" mapped-by="pasajero1" connected-entity-id="_146196384359867" connected-attribute-id="_146196384359987" visibile="true" id="_146196384359876"/>
+        </jpa:attributes>
+        <jpa:table name="pasajero">
+            <jpa:unique-constraint>
+                <jpa:column-name>cedula</jpa:column-name>
+            </jpa:unique-constraint>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Aeropuerto" visibile="true" minimized="false" id="_146196384359866">
+        <jpa:attributes>
+            <jpa:id name="idAeropuerto" attribute-type="Integer" visibile="true" id="_146196384359877">
+                <jpa:column name="idAeropuerto" unique="false" nullable="false" insertable="true" updatable="true" table="aeropuerto"/>
+            </jpa:id>
+            <jpa:basic name="nombre" optional="false" attribute-type="String" visibile="true" id="_146196384359878">
+                <jpa:column name="nombre" unique="false" nullable="false" insertable="true" updatable="true" table="aeropuerto" length="35"/>
+            </jpa:basic>
+            <jpa:many-to-one name="idCiudad" target-entity="Ciudad" optional="false" primaryKey="false" connected-entity-id="_146196384359868" connected-attribute-id="_146196384359990" visibile="true" id="_146196384359879">
+                <jpa:join-column name="idCiudad" referenced-column-name="idCiudad" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="vueloCollection" target-entity="Vuelo" mapped-by="origen" connected-entity-id="_146196384359869" connected-attribute-id="_146196384359998" visibile="true" id="_146196384359880"/>
+            <jpa:one-to-many name="vueloCollection1" target-entity="Vuelo" mapped-by="destino" connected-entity-id="_146196384359869" connected-attribute-id="_146196384359999" visibile="true" id="_146196384359881"/>
+        </jpa:attributes>
+        <jpa:table name="aeropuerto">
+            <jpa:unique-constraint>
+                <jpa:column-name>idAeropuerto</jpa:column-name>
+            </jpa:unique-constraint>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Tiquete" visibile="true" minimized="false" id="_146196384359867">
+        <jpa:attributes>
+            <jpa:id name="vuelo" attribute-type="int" visibile="true" id="_146196384359882">
+                <jpa:column name="vuelo" unique="false" nullable="false" insertable="true" updatable="true" table="tiquete"/>
+            </jpa:id>
+            <jpa:id name="pasajero" attribute-type="String" visibile="true" id="_146196384359883">
+                <jpa:column name="pasajero" unique="false" nullable="false" insertable="true" updatable="true" table="tiquete" length="35"/>
+            </jpa:id>
+            <jpa:basic name="reserva" optional="true" attribute-type="Boolean" visibile="true" id="_146196384359884">
+                <jpa:column name="reserva" unique="false" nullable="true" insertable="true" updatable="true" table="tiquete"/>
+            </jpa:basic>
+            <jpa:basic name="paga" optional="true" attribute-type="Boolean" visibile="true" id="_146196384359885">
+                <jpa:column name="paga" unique="false" nullable="true" insertable="true" updatable="true" table="tiquete"/>
+            </jpa:basic>
+            <jpa:many-to-one name="vuelo1" target-entity="Vuelo" optional="false" primaryKey="false" connected-entity-id="_146196384359869" connected-attribute-id="_146196384359995" visibile="true" id="_146196384359986">
+                <jpa:join-column name="vuelo" referenced-column-name="idVuelo" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="pasajero1" target-entity="Pasajero" optional="false" primaryKey="false" connected-entity-id="_146196384359865" connected-attribute-id="_146196384359876" visibile="true" id="_146196384359987">
+                <jpa:join-column name="pasajero" referenced-column-name="cedula" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="tiquete"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Ciudad" visibile="true" minimized="false" id="_146196384359868">
+        <jpa:attributes>
+            <jpa:id name="idCiudad" attribute-type="Integer" visibile="true" id="_146196384359988">
+                <jpa:column name="idCiudad" unique="false" nullable="false" insertable="true" updatable="true" table="ciudad"/>
+            </jpa:id>
+            <jpa:basic name="nombre" optional="false" attribute-type="String" visibile="true" id="_146196384359989">
+                <jpa:column name="nombre" unique="false" nullable="false" insertable="true" updatable="true" table="ciudad" length="35"/>
+            </jpa:basic>
+            <jpa:one-to-many name="aeropuertoCollection" target-entity="Aeropuerto" mapped-by="idCiudad" connected-entity-id="_146196384359866" connected-attribute-id="_146196384359879" visibile="true" id="_146196384359990"/>
+        </jpa:attributes>
+        <jpa:table name="ciudad">
+            <jpa:unique-constraint>
+                <jpa:column-name>idCiudad</jpa:column-name>
+            </jpa:unique-constraint>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Vuelo" visibile="true" minimized="false" id="_146196384359869">
+        <jpa:attributes>
+            <jpa:id name="idVuelo" attribute-type="Integer" visibile="true" id="_146196384359991">
+                <jpa:column name="idVuelo" unique="false" nullable="false" insertable="true" updatable="true" table="vuelo"/>
+            </jpa:id>
+            <jpa:basic name="precio" optional="false" attribute-type="int" visibile="true" id="_146196384359992">
+                <jpa:column name="precio" unique="false" nullable="false" insertable="true" updatable="true" table="vuelo"/>
+            </jpa:basic>
+            <jpa:basic name="dia" optional="false" attribute-type="java.util.Date" visibile="true" id="_146196384359993">
+                <jpa:column name="dia" unique="false" nullable="false" insertable="true" updatable="true" table="vuelo"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="hora" optional="false" attribute-type="java.util.Date" visibile="true" id="_146196384359994">
+                <jpa:column name="hora" unique="false" nullable="false" insertable="true" updatable="true" table="vuelo"/>
+                <jpa:temporal>TIME</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="idAvion" target-entity="Avion" optional="false" primaryKey="false" connected-entity-id="_146196384359870" connected-attribute-id="_1461963843599103" visibile="true" id="_146196384359996">
+                <jpa:join-column name="idAvion" referenced-column-name="idAvion" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="idPiloto" target-entity="Piloto" optional="false" primaryKey="false" connected-entity-id="_146196384359871" connected-attribute-id="_1461963843599107" visibile="true" id="_146196384359997">
+                <jpa:join-column name="idPiloto" referenced-column-name="cedula" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="origen" target-entity="Aeropuerto" optional="false" primaryKey="false" connected-entity-id="_146196384359866" connected-attribute-id="_146196384359880" visibile="true" id="_146196384359998">
+                <jpa:join-column name="origen" referenced-column-name="idAeropuerto" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="destino" target-entity="Aeropuerto" optional="false" primaryKey="false" connected-entity-id="_146196384359866" connected-attribute-id="_146196384359881" visibile="true" id="_146196384359999">
+                <jpa:join-column name="destino" referenced-column-name="idAeropuerto" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="tiqueteCollection" target-entity="Tiquete" mapped-by="vuelo1" connected-entity-id="_146196384359867" connected-attribute-id="_146196384359986" visibile="true" id="_146196384359995"/>
+        </jpa:attributes>
+        <jpa:table name="vuelo">
+            <jpa:unique-constraint>
+                <jpa:column-name>idVuelo</jpa:column-name>
+            </jpa:unique-constraint>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Avion" visibile="true" minimized="false" id="_146196384359870">
+        <jpa:attributes>
+            <jpa:id name="idAvion" attribute-type="Integer" visibile="true" id="_1461963843599100">
+                <jpa:column name="idAvion" unique="false" nullable="false" insertable="true" updatable="true" table="avion"/>
+            </jpa:id>
+            <jpa:basic name="nombre" optional="false" attribute-type="String" visibile="true" id="_1461963843599101">
+                <jpa:column name="nombre" unique="false" nullable="false" insertable="true" updatable="true" table="avion" length="35"/>
+            </jpa:basic>
+            <jpa:basic name="capacidad" optional="false" attribute-type="int" visibile="true" id="_1461963843599102">
+                <jpa:column name="capacidad" unique="false" nullable="false" insertable="true" updatable="true" table="avion"/>
+            </jpa:basic>
+            <jpa:one-to-many name="vueloCollection" target-entity="Vuelo" mapped-by="idAvion" connected-entity-id="_146196384359869" connected-attribute-id="_146196384359996" visibile="true" id="_1461963843599103"/>
+        </jpa:attributes>
+        <jpa:table name="avion">
+            <jpa:unique-constraint>
+                <jpa:column-name>idAvion</jpa:column-name>
+            </jpa:unique-constraint>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Piloto" visibile="true" minimized="false" id="_146196384359871">
+        <jpa:attributes>
+            <jpa:id name="cedula" attribute-type="String" visibile="true" id="_1461963843599104">
+                <jpa:column name="cedula" unique="false" nullable="false" insertable="true" updatable="true" table="piloto" length="35"/>
+            </jpa:id>
+            <jpa:basic name="nombre" optional="false" attribute-type="String" visibile="true" id="_1461963843599105">
+                <jpa:column name="nombre" unique="false" nullable="false" insertable="true" updatable="true" table="piloto" length="35"/>
+            </jpa:basic>
+            <jpa:basic name="salario" optional="false" attribute-type="int" visibile="true" id="_1461963843599106">
+                <jpa:column name="salario" unique="false" nullable="false" insertable="true" updatable="true" table="piloto"/>
+            </jpa:basic>
+            <jpa:one-to-many name="vueloCollection" target-entity="Vuelo" mapped-by="idPiloto" connected-entity-id="_146196384359869" connected-attribute-id="_146196384359997" visibile="true" id="_1461963843599107"/>
+        </jpa:attributes>
+        <jpa:table name="piloto">
+            <jpa:unique-constraint>
+                <jpa:column-name>cedula</jpa:column-name>
+            </jpa:unique-constraint>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:diagram id="_146196384359863">
+        <plane elementRef="_146196384359862" id="_146196384359864_p"/>
+    </jpa:diagram>
+</jpa:entity-mappings>
